@@ -65,7 +65,7 @@ def update_row():
     query = """
         UPDATE DrugUse 
         SET alcohol_use = 60.0, marijuana_use = 35.0
-        WHERE age = '30-34' AND n = 1000
+        WHERE age = '30-34'
     """
     cursor.execute(query)
     conn.commit()
@@ -83,13 +83,13 @@ def delete_row():
     
     query = """
         DELETE FROM DrugUse 
-        WHERE age = '30-34' AND n = 1000
+        WHERE age = '30-34'
     """
     cursor.execute(query)
     conn.commit()
     
     logging.info("Executed DELETE query:\n```sql\n%s\n```", query)
-    logging.info("Deleted the row with age '30-34' and n=1000.")
+    logging.info("Deleted the row with age '30-34'.")
     
     conn.close()
     return "Success"

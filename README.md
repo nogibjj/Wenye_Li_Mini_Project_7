@@ -1,42 +1,78 @@
-## SQLite Lab
+[![CI](https://github.com/nogibjj/Wenye_Li_Mini_Project_5/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_5/actions/workflows/cicd.yml)
 
-![4 17-etl-sqlite-RAW](https://github.com/nogibjj/sqlite-lab/assets/58792/b39b21b4-ccb4-4cc4-b262-7db34492c16d)
+## Wenye Li Mini Project 5
 
+## Requirements
 
+Connect to a SQL database
+Perform CRUD operations
+Write at least two different SQL queries
 
-### Lab:
+## Project Structures
 
-* Use an AI Assistant, but use a different one then you used from a previous lab (Anthropic's Claud, Bard, Copilot, CodeWhisperer, Colab AI, etc)
-* ETL-Query:  [E] Extract a dataset from URL, [T] Transform, [L] Load into SQLite Database and [Q] Query
-For the ETL-Query lab:
-* [E] Extract a dataset from a URL like Kaggle or data.gov. JSON or CSV formats tend to work well.
-* [T] Transform the data by cleaning, filtering, enriching, etc to get it ready for analysis.
-* [L] Load the transformed data into a SQLite database table using Python's sqlite3 module.
-* [Q] Write and execute SQL queries on the SQLite database to analyze and retrieve insights from the data.
+- `Makefile`:
 
-#### Tasks:
+- `requirements.txt`
 
-* Fork this project and get it to run
-* Make the query more useful and not a giant mess that prints to screen
-* Convert the main.py into a command-line tool that lets you run each step independantly
-* Fork this project and do the same thing for a new dataset you choose
-* Make sure your project passes lint/tests and has a built badge
-* Include an architectural diagram showing how the project works
+- `mylib`:
 
-#### Reflection Questions
+  - **extract.py**
+  - **transform_load**
+  - **queryt**
 
-* What challenges did you face when extracting, transforming, and loading the data? How did you overcome them?
-* What insights or new knowledge did you gain from querying the SQLite database?
-* How can SQLite and SQL help make data analysis more efficient? What are the limitations?
-* What AI assistant did you use and how did it compare to others you've tried? What are its strengths and weaknesses?
-* If you could enhance this lab, what would you add or change? What other data would be interesting to load and query?
+- `main.py`
 
-##### Challenge Exercises
+- `test_main.py`
 
-* Add more transformations to the data before loading it into SQLite. Ideas: join with another dataset, aggregate by categories, normalize columns.
-* Write a query to find correlated fields in the data. Print the query results nicely formatted.
-* Create a second table in the SQLite database and write a join query with the two tables.
-* Build a simple Flask web app that runs queries on demand and displays results.
-* Containerize the application using Docker so the database and queries can be portable
+- `README.me`
 
+- `cicd.yml`
 
+- `devcontainer`
+
+- `DrugUse.db`
+
+## Dataset
+
+| Header                    | Definition                                                                              |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `alcohol-use`             | Percentage of those in an age group who used alcohol in the past 12 months              |
+| `alcohol-frequency`       | Median number of times a user in an age group used alcohol in the past 12 months        |
+| `marijuana-use`           | Percentage of those in an age group who used marijuana in the past 12 months            |
+| `marijuana-frequency`     | Median number of times a user in an age group used marijuana in the past 12 months      |
+| `cocaine-use`             | Percentage of those in an age group who used cocaine in the past 12 months              |
+| `cocaine-frequency`       | Median number of times a user in an age group used cocaine in the past 12 months        |
+| `crack-use`               | Percentage of those in an age group who used crack in the past 12 months                |
+| `crack-frequency`         | Median number of times a user in an age group used crack in the past 12 months          |
+| `heroin-use`              | Percentage of those in an age group who used heroin in the past 12 months               |
+| `heroin-frequency`        | Median number of times a user in an age group used heroin in the past 12 months         |
+| `hallucinogen-use`        | Percentage of those in an age group who used hallucinogens in the past 12 months        |
+| `hallucinogen-frequency`  | Median number of times a user in an age group used hallucinogens in the past 12 months  |
+| `inhalant-use`            | Percentage of those in an age group who used inhalants in the past 12 months            |
+| `inhalant-frequency`      | Median number of times a user in an age group used inhalants in the past 12 months      |
+| `pain-releiver-use`       | Percentage of those in an age group who used pain relievers in the past 12 months       |
+| `pain-releiver-frequency` | Median number of times a user in an age group used pain relievers in the past 12 months |
+| `oxycontin-use`           | Percentage of those in an age group who used oxycontin in the past 12 months            |
+| `oxycontin-frequency`     | Median number of times a user in an age group used oxycontin in the past 12 months      |
+| `tranquilizer-use`        | Percentage of those in an age group who used tranquilizer in the past 12 months         |
+| `tranquilizer-frequency`  | Median number of times a user in an age group used tranquilizer in the past 12 months   |
+| `stimulant-use`           | Percentage of those in an age group who used stimulants in the past 12 months           |
+| `stimulant-frequency`     | Median number of times a user in an age group used stimulants in the past 12 months     |
+| `meth-use`                | Percentage of those in an age group who used meth in the past 12 months                 |
+| `meth-frequency`          | Median number of times a user in an age group used meth in the past 12 months           |
+| `sedative-use`            | Percentage of those in an age group who used sedatives in the past 12 months            |
+| `sedative-frequency`      | Median number of times a user in an age group used sedatives in the past 12 months      |
+
+## CRUD Operations：
+
+- **`read`** </br>
+  Retrieving all records from the DrugUse.db table.
+
+- **`create`** </br>
+  Inserting a new record into the DrugUse.db table with predefined values.
+
+- **`delete`** </br>
+  Deleting a row from the DrugUse.db table.
+
+- **`update`** </br>
+  Updating an existing row from the DrugUse.db table.
