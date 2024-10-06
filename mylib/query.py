@@ -5,14 +5,7 @@ def query():
     """Query the database and perform insert, update, and delete operations"""
     conn = sqlite3.connect("DrugUseDB.db")
     cursor = conn.cursor()
-
-    # Perform SELECT
-    cursor.execute("SELECT * FROM DrugUse LIMIT 5")
-    rows = cursor.fetchall()
-    print("Initial rows:")
-    for row in rows:
-        print(row)
-
+    
     # Perform INSERT
     cursor.execute(
         """
@@ -25,7 +18,7 @@ def query():
         oxycontin_use, oxycontin_frequency, tranquilizer_use, 
         tranquilizer_frequency, stimulant_use, stimulant_frequency, 
         meth_use, meth_frequency, sedative_use, sedative_frequency) 
-        
+
         VALUES ('75+', 1000, 50.0, 40.0, 30.0, 20.0, 5.0, 1.0, 0.0, 
         0.0, 0.0, 0.0, 10.0, 5.0, 3.0, 2.0, 5.0, 3.0, 0.5, 
         0.5, 1.0, 1.0, 2.0, 1.0, 0.0, 0.0, 0.5, 0.3)
@@ -51,6 +44,12 @@ def query():
         """
     )
     print("Deleted a row.")
+
+    # Perform SELECT
+    cursor.execute("SELECT * FROM DrugUse")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
 
     conn.commit()
     conn.close()
