@@ -10,8 +10,8 @@ Write at least two different SQL queries
 
 ## Deliverables
 
-Python script: Please check **extract.py**, **transform_load.py**, and **query.py**
-Screenshot or log of successful database operations: Please check **db_operations.md**
+- Python script: Please check **extract.py**, **transform_load.py**, and **query.py**
+- Screenshot or log of successful database operations: Please check **db_operations.md**
 
 ## Project Structures
 
