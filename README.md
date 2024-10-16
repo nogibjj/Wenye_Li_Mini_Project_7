@@ -1,17 +1,16 @@
 [![CI](https://github.com/nogibjj/Wenye_Li_Mini_Project_5/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_5/actions/workflows/cicd.yml)
 
-## Wenye Li Mini Project 5
+## Wenye Li Mini Project 6
 
 ## Requirements
 
-Connect to a SQL database
-Perform CRUD operations
-Write at least two different SQL queries
+- Design a complex SQL query involving joins, aggregation, and sorting
+- Provide an explanation for what the query is doing and the expected results
 
 ## Deliverables
 
-- Python script: Please check **extract.py**, **transform_load.py**, and **query.py**
-- Screenshot or log of successful database operations: Please check **db_operations.md**
+- SQL query
+- Written or video explanation of the query
 
 ## Project Structures
 
@@ -34,8 +33,6 @@ Write at least two different SQL queries
 - `cicd.yml`
 
 - `devcontainer`
-
-- `DrugUse.db`
 
 ## Dataset
 
@@ -67,17 +64,3 @@ Write at least two different SQL queries
 | `meth-frequency`          | Median number of times a user in an age group used meth in the past 12 months           |
 | `sedative-use`            | Percentage of those in an age group who used sedatives in the past 12 months            |
 | `sedative-frequency`      | Median number of times a user in an age group used sedatives in the past 12 months      |
-
-## CRUD Operations：
-
-- **`read`** </br>
-  Retrieving all records from the DrugUse.db table.
-
-- **`create`** </br>
-  Inserting a new record into the DrugUse.db table with predefined values.
-
-- **`delete`** </br>
-  Deleting a row from the DrugUse.db table.
-
-- **`update`** </br>
-  Updating an existing row from the DrugUse.db table.
