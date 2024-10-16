@@ -19,7 +19,5 @@ def extract(url="https://raw.githubusercontent.com/fivethirtyeight/data/refs/hea
             f.write(r.content)
     return file_path
 
-extract()
-
 
 

@@ -1,5 +1,7 @@
-import sqlite3
+from databricks import sql
+import os
 import logging
+from dotenv import load_dotenv
 
 logging.basicConfig(
     level=logging.INFO,
@@ -10,86 +12,46 @@ logging.basicConfig(
     ]
 )
 
-def insert_row():
-    """Insert a row into the DrugUse table."""
-    conn = sqlite3.connect("DrugUseDB.db")
-    cursor = conn.cursor()
-    
-    query = """
-        INSERT INTO DrugUse (
-            age, n, alcohol_use, alcohol_frequency, marijuana_use, 
-            marijuana_frequency, cocaine_use, cocaine_frequency, 
-            crack_use, crack_frequency, heroin_use, heroin_frequency,
-            hallucinogen_use, hallucinogen_frequency, inhalant_use, 
-            inhalant_frequency, pain_releiver_use, pain_releiver_frequency, 
-            oxycontin_use, oxycontin_frequency, tranquilizer_use, 
-            tranquilizer_frequency, stimulant_use, stimulant_frequency, 
-            meth_use, meth_frequency, sedative_use, sedative_frequency) 
-        VALUES ('75+', 1000, 50.0, 40.0, 30.0, 20.0, 5.0, 1.0, 0.0, 
-            0.0, 0.0, 0.0, 10.0, 5.0, 3.0, 2.0, 5.0, 3.0, 0.5, 
-            0.5, 1.0, 1.0, 2.0, 1.0, 0.0, 0.0, 0.5, 0.3)
-    """
-    cursor.execute(query)
-    conn.commit()
-    
-    # 记录日志
-    logging.info("Executed INSERT query:\n```sql\n%s\n```", query)
-    logging.info("Inserted a new row into the DrugUse table.")
-    
-    conn.close()
+load_dotenv()
+server_h = os.getenv("SERVER_HOSTNAME")
+access_token = os.getenv("DATABRICKS_KEY")
+http_path = os.getenv("HTTP_PATH")
+
+def complex_query():
+    """A complex SQL query involving joins, aggregation, and sorting."""
+    with sql.connect(
+        server_hostname=server_h,
+        http_path=http_path,
+        access_token=access_token,
+    ) as connection:
+        cursor = connection.cursor()
+
+        query = """
+            WITH AgeStats AS (
+                SELECT age,
+                       AVG(alcohol_use) AS avg_alcohol_use,
+                       AVG(marijuana_use) AS avg_marijuana_use
+                FROM DrugUseDB
+                GROUP BY age
+            )
+            SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, d.marijuana_use, a.avg_marijuana_use
+            FROM DrugUseDB d
+            JOIN AgeStats a
+            ON d.age = a.age
+            ORDER BY d.age ASC, d.n DESC
+        """
+        cursor.execute(query)
+        rows = cursor.fetchall()
+
+        logging.info("Executed complex query with JOIN, aggregation, and sorting:\n```sql\n%s\n```", query)
+        logging.info("Query results:\n%s", rows)
+        
+        for row in rows:
+            print(row)
+
+        cursor.close()
     return "Success"
 
-def select_rows():
-    """Select and print all rows from the DrugUse table."""
-    conn = sqlite3.connect("DrugUseDB.db")
-    cursor = conn.cursor()
-    
-    query = "SELECT * FROM DrugUse"
-    cursor.execute(query)
-    rows = cursor.fetchall()
-    
-    logging.info("Executed SELECT query:\n```sql\n%s\n```", query)
-    logging.info("Selected rows:\n%s", rows)
-    
-    for row in rows:
-        print(row)
-    
-    conn.close()
-    return "Success"
 
-def update_row():
-    """Update a specific row in the DrugUse table."""
-    conn = sqlite3.connect("DrugUseDB.db")
-    cursor = conn.cursor()
-    
-    query = """
-        UPDATE DrugUse 
-        SET alcohol_use = 60.0, marijuana_use = 35.0
-        WHERE age = '30-34'
-    """
-    cursor.execute(query)
-    conn.commit()
-    
-    logging.info("Executed UPDATE query:\n```sql\n%s\n```", query)
-    logging.info("Updated the row with age '30-34' and n=1000.")
-    
-    conn.close()
-    return "Success"
-
-def delete_row():
-    """Delete a specific row from the DrugUse table."""
-    conn = sqlite3.connect("DrugUseDB.db")
-    cursor = conn.cursor()
-    
-    query = """
-        DELETE FROM DrugUse 
-        WHERE age = '30-34'
-    """
-    cursor.execute(query)
-    conn.commit()
-    
-    logging.info("Executed DELETE query:\n```sql\n%s\n```", query)
-    logging.info("Deleted the row with age '30-34'.")
-    
-    conn.close()
-    return "Success"
+if __name__ == "__main__":
+    complex_query()
