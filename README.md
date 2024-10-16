@@ -99,5 +99,5 @@ The results of the query provide insights into the relationship between age grou
 
 Key findings include:
 
-- Alcohol Use: The query shows how alcohol use varies by age group, with a comparison of the average alcohol use within each age group.
-- Marijuana Use: Similarly, the average marijuana use by age group is also analyzed, providing a sense of how marijuana consumption differs across age demographics.
+- Alcohol and marijuana use both increase with age, peaking in early adulthood, with alcohol consistently more prevalent than marijuana across all age groups.
+- Substance use declines sharply in older age groups, particularly for marijuana, which drops significantly after age 25.
