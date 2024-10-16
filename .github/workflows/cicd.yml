@@ -16,6 +16,8 @@ jobs:
           python-version: 3.12
       - name: install packages
         run: make install
+      - name: format
+        run: make format
       - name: lint
         run: make lint
       - name: test
@@ -24,7 +26,3 @@ jobs:
           HTTP_PATH: ${{ secrets.HTTP_PATH }}
           DATABRICKS_KEY: ${{ secrets.DATABRICKS_KEY }}
         run: make test
-      - name: format
-        run: make format
-      - name: deploy
-        run: make deploy
