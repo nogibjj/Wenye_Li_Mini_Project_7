@@ -68,25 +68,34 @@ def load(dataset="data/drug-use-by-age.csv"):
                     float(row['marijuana_use']),
                     float(row['marijuana_frequency']),
                     float(row['cocaine_use']),
-                    float(row['cocaine_frequency']) if row['cocaine_frequency'] != '-' else None,
-                    float(row['crack_use']) if row['crack_use'] != '-' else None,
-                    float(row['crack_frequency']) if row['crack_frequency'] != '-' else None,
-                    float(row['heroin_use']) if row['heroin_use'] != '-' else None,
-                    float(row['heroin_frequency']) if row['heroin_frequency'] != '-' else None,
+                    float(row['cocaine_frequency']) 
+                    if row['cocaine_frequency'] != '-' else None,
+                    float(row['crack_use']) 
+                    if row['crack_use'] != '-' else None,
+                    float(row['crack_frequency']) 
+                    if row['crack_frequency'] != '-' else None,
+                    float(row['heroin_use']) 
+                    if row['heroin_use'] != '-' else None,
+                    float(row['heroin_frequency']) 
+                    if row['heroin_frequency'] != '-' else None,
                     float(row['hallucinogen_use']),
                     float(row['hallucinogen_frequency']),
                     float(row['inhalant_use']),
-                    float(row['inhalant_frequency']) if row['inhalant_frequency'] != '-' else None,
+                    float(row['inhalant_frequency']) 
+                    if row['inhalant_frequency'] != '-' else None,
                     float(row['pain_releiver_use']),
                     float(row['pain_releiver_frequency']),
                     float(row['oxycontin_use']),
-                    float(row['oxycontin_frequency']) if row['oxycontin_frequency'] != '-' else None,
+                    float(row['oxycontin_frequency']) 
+                    if row['oxycontin_frequency'] != '-' else None,
                     float(row['tranquilizer_use']),
                     float(row['tranquilizer_frequency']),
                     float(row['stimulant_use']),
                     float(row['stimulant_frequency']),
-                    float(row['meth_use']) if row['meth_use'] != '-' else None,
-                    float(row['meth_frequency']) if row['meth_frequency'] != '-' else None,
+                    float(row['meth_use']) 
+                    if row['meth_use'] != '-' else None,
+                    float(row['meth_frequency']) 
+                    if row['meth_frequency'] != '-' else None,
                     float(row['sedative_use']),
                     float(row['sedative_frequency'])
                 ))

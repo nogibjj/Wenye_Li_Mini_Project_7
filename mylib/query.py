@@ -34,7 +34,8 @@ def complex_query():
                 FROM DrugUseDB
                 GROUP BY age
             )
-            SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, d.marijuana_use, a.avg_marijuana_use
+            SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, 
+            d.marijuana_use, a.avg_marijuana_use
             FROM DrugUseDB d
             JOIN AgeStats a
             ON d.age = a.age
@@ -43,7 +44,7 @@ def complex_query():
         cursor.execute(query)
         rows = cursor.fetchall()
 
-        logging.info("Executed complex query with JOIN, aggregation, and sorting:\n```sql\n%s\n```", query)
+        logging.info("Executed query:\n```sql\n%s\n```", query)
         logging.info("Query results:\n%s", rows)
         
         for row in rows:

@@ -1,49 +1,24 @@
-**2024-10-06 02:17:41,633** - INFO - Executed INSERT query:
+**2024-10-15 23:25:33,999** - INFO - Successfully opened session 01ef8b6e-4dce-12a5-b1d2-35a4a8c7f2ef
+**2024-10-15 23:25:35,413** - INFO - Executed query:
 
 ```sql
 
-        INSERT INTO DrugUse (
-            age, n, alcohol_use, alcohol_frequency, marijuana_use,
-            marijuana_frequency, cocaine_use, cocaine_frequency,
-            crack_use, crack_frequency, heroin_use, heroin_frequency,
-            hallucinogen_use, hallucinogen_frequency, inhalant_use,
-            inhalant_frequency, pain_releiver_use, pain_releiver_frequency,
-            oxycontin_use, oxycontin_frequency, tranquilizer_use,
-            tranquilizer_frequency, stimulant_use, stimulant_frequency,
-            meth_use, meth_frequency, sedative_use, sedative_frequency)
-        VALUES ('75+', 1000, 50.0, 40.0, 30.0, 20.0, 5.0, 1.0, 0.0,
-            0.0, 0.0, 0.0, 10.0, 5.0, 3.0, 2.0, 5.0, 3.0, 0.5,
-            0.5, 1.0, 1.0, 2.0, 1.0, 0.0, 0.0, 0.5, 0.3)
+            WITH AgeStats AS (
+                SELECT age,
+                       AVG(alcohol_use) AS avg_alcohol_use,
+                       AVG(marijuana_use) AS avg_marijuana_use
+                FROM DrugUseDB
+                GROUP BY age
+            )
+            SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use,
+            d.marijuana_use, a.avg_marijuana_use
+            FROM DrugUseDB d
+            JOIN AgeStats a
+            ON d.age = a.age
+            ORDER BY d.age ASC, d.n DESC
 
 ```
 
-**2024-10-06 02:17:41,633** - INFO - Inserted a new row into the DrugUse table.
-**2024-10-06 02:17:41,634** - INFO - Executed UPDATE query:
-
-```sql
-
-        UPDATE DrugUse
-        SET alcohol_use = 60.0, marijuana_use = 35.0
-        WHERE age = '30-34'
-
-```
-
-**2024-10-06 02:17:41,634** - INFO - Updated the row with age '30-34' and n=1000.
-**2024-10-06 02:17:41,635** - INFO - Executed DELETE query:
-
-```sql
-
-        DELETE FROM DrugUse
-        WHERE age = '30-34'
-
-```
-
-**2024-10-06 02:17:41,635** - INFO - Deleted the row with age '30-34'.
-**2024-10-06 02:17:41,635** - INFO - Executed SELECT query:
-
-```sql
-SELECT * FROM DrugUse
-```
-
-**2024-10-06 02:17:41,635** - INFO - Selected rows:
-[('12', 2798, 3.9, 3.0, 1.1, 4.0, 0.1, 5.0, 0.0, None, 0.1, 35.5, 0.2, 52.0, 1.6, 19.0, 2.0, 36.0, 0.1, 24.5, 0.2, 52.0, 0.2, 2.0, 0.0, None, 0.2, 13.0), ('13', 2757, 8.5, 6.0, 3.4, 15.0, 0.1, 1.0, 0.0, 3.0, 0.0, None, 0.6, 6.0, 2.5, 12.0, 2.4, 14.0, 0.1, 41.0, 0.3, 25.5, 0.3, 4.0, 0.1, 5.0, 0.1, 19.0), ('14', 2792, 18.1, 5.0, 8.7, 24.0, 0.1, 5.5, 0.0, None, 0.1, 2.0, 1.6, 3.0, 2.6, 5.0, 3.9, 12.0, 0.4, 4.5, 0.9, 5.0, 0.8, 12.0, 0.1, 24.0, 0.2, 16.5), ('15', 2956, 29.2, 6.0, 14.5, 25.0, 0.5, 4.0, 0.1, 9.5, 0.2, 1.0, 2.1, 4.0, 2.5, 5.5, 5.5, 10.0, 0.8, 3.0, 2.0, 4.5, 1.5, 6.0, 0.3, 10.5, 0.4, 30.0), ('16', 3058, 40.1, 10.0, 22.5, 30.0, 1.0, 7.0, 0.0, 1.0, 0.1, 66.5, 3.4, 3.0, 3.0, 3.0, 6.2, 7.0, 1.1, 4.0, 2.4, 11.0, 1.8, 9.5, 0.3, 36.0, 0.2, 3.0), ('17', 3038, 49.3, 13.0, 28.0, 36.0, 2.0, 5.0, 0.1, 21.0, 0.1, 64.0, 4.8, 3.0, 2.0, 4.0, 8.5, 9.0, 1.4, 6.0, 3.5, 7.0, 2.8, 9.0, 0.6, 48.0, 0.5, 6.5), ('18', 2469, 58.7, 24.0, 33.7, 52.0, 3.2, 5.0, 0.4, 10.0, 0.4, 46.0, 7.0, 4.0, 1.8, 4.0, 9.2, 12.0, 1.7, 7.0, 4.9, 12.0, 3.0, 8.0, 0.5, 12.0, 0.4, 10.0), ('19', 2223, 64.6, 36.0, 33.4, 60.0, 4.1, 5.5, 0.5, 2.0, 0.5, 180.0, 8.6, 3.0, 1.4, 3.0, 9.4, 12.0, 1.5, 7.5, 4.2, 4.5, 3.3, 6.0, 0.4, 105.0, 0.3, 6.0), ('20', 2271, 69.7, 48.0, 34.0, 60.0, 4.9, 8.0, 0.6, 5.0, 0.9, 45.0, 7.4, 2.0, 1.5, 4.0, 10.0, 10.0, 1.7, 12.0, 5.4, 10.0, 4.0, 12.0, 0.9, 12.0, 0.5, 4.0), ('21', 2354, 83.2, 52.0, 33.0, 52.0, 4.8, 5.0, 0.5, 17.0, 0.6, 30.0, 6.3, 4.0, 1.4, 2.0, 9.0, 15.0, 1.3, 13.5, 3.9, 7.0, 4.1, 10.0, 0.6, 2.0, 0.3, 9.0), ('22-23', 4707, 84.2, 52.0, 28.4, 52.0, 4.5, 5.0, 0.5, 5.0, 1.1, 57.5, 5.2, 3.0, 1.0, 4.0, 10.0, 15.0, 1.7, 17.5, 4.4, 12.0, 3.6, 10.0, 0.6, 46.0, 0.2, 52.0), ('24-25', 4591, 83.1, 52.0, 24.9, 60.0, 4.0, 6.0, 0.5, 6.0, 0.7, 88.0, 4.5, 2.0, 0.8, 2.0, 9.0, 15.0, 1.3, 20.0, 4.3, 10.0, 2.6, 10.0, 0.7, 21.0, 0.2, 17.5), ('26-29', 2628, 80.7, 52.0, 20.8, 52.0, 3.2, 5.0, 0.4, 6.0, 0.6, 50.0, 3.2, 3.0, 0.6, 4.0, 8.3, 13.0, 1.2, 13.5, 4.2, 10.0, 2.3, 7.0, 0.6, 30.0, 0.4, 4.0), ('35-49', 7391, 75.0, 52.0, 10.4, 48.0, 1.5, 15.0, 0.5, 48.0, 0.1, 280.0, 0.6, 3.0, 0.3, 10.0, 4.2, 12.0, 0.3, 12.0, 1.9, 6.0, 0.6, 24.0, 0.2, 104.0, 0.3, 10.0), ('50-64', 3923, 67.2, 52.0, 7.3, 52.0, 0.9, 36.0, 0.4, 62.0, 0.1, 41.0, 0.3, 44.0, 0.2, 13.5, 2.5, 12.0, 0.4, 5.0, 1.4, 10.0, 0.3, 24.0, 0.2, 30.0, 0.2, 104.0), ('65+', 2448, 49.3, 52.0, 1.2, 36.0, 0.0, None, 0.0, None, 0.0, 120.0, 0.1, 2.0, 0.0, None, 0.6, 24.0, 0.0, None, 0.2, 5.0, 0.0, 364.0, 0.0, None, 0.0, 15.0), ('75+', 1000, 50.0, 40.0, 30.0, 20.0, 5.0, 1.0, 0.0, 0.0, 0.0, 0.0, 10.0, 5.0, 3.0, 2.0, 5.0, 3.0, 0.5, 0.5, 1.0, 1.0, 2.0, 1.0, 0.0, 0.0, 0.5, 0.3)]
+**2024-10-15 23:25:35,413** - INFO - Query results:
+[Row(age='12', n=2798, alcohol_use=3.9000000953674316, avg_alcohol_use=3.9000000953674316, marijuana_use=1.100000023841858, avg_marijuana_use=1.100000023841858), Row(age='13', n=2757, alcohol_use=8.5, avg_alcohol_use=8.5, marijuana_use=3.4000000953674316, avg_marijuana_use=3.4000000953674316), Row(age='14', n=2792, alcohol_use=18.100000381469727, avg_alcohol_use=18.100000381469727, marijuana_use=8.699999809265137, avg_marijuana_use=8.699999809265137), Row(age='15', n=2956, alcohol_use=29.200000762939453, avg_alcohol_use=29.200000762939453, marijuana_use=14.5, avg_marijuana_use=14.5), Row(age='16', n=3058, alcohol_use=40.099998474121094, avg_alcohol_use=40.099998474121094, marijuana_use=22.5, avg_marijuana_use=22.5), Row(age='17', n=3038, alcohol_use=49.29999923706055, avg_alcohol_use=49.29999923706055, marijuana_use=28.0, avg_marijuana_use=28.0), Row(age='18', n=2469, alcohol_use=58.70000076293945, avg_alcohol_use=58.70000076293945, marijuana_use=33.70000076293945, avg_marijuana_use=33.70000076293945), Row(age='19', n=2223, alcohol_use=64.5999984741211, avg_alcohol_use=64.5999984741211, marijuana_use=33.400001525878906, avg_marijuana_use=33.400001525878906), Row(age='20', n=2271, alcohol_use=69.69999694824219, avg_alcohol_use=69.69999694824219, marijuana_use=34.0, avg_marijuana_use=34.0), Row(age='21', n=2354, alcohol_use=83.19999694824219, avg_alcohol_use=83.19999694824219, marijuana_use=33.0, avg_marijuana_use=33.0), Row(age='22-23', n=4707, alcohol_use=84.19999694824219, avg_alcohol_use=84.19999694824219, marijuana_use=28.399999618530273, avg_marijuana_use=28.399999618530273), Row(age='24-25', n=4591, alcohol_use=83.0999984741211, avg_alcohol_use=83.0999984741211, marijuana_use=24.899999618530273, avg_marijuana_use=24.899999618530273), Row(age='26-29', n=2628, alcohol_use=80.69999694824219, avg_alcohol_use=80.69999694824219, marijuana_use=20.799999237060547, avg_marijuana_use=20.799999237060547), Row(age='30-34', n=2864, alcohol_use=77.5, avg_alcohol_use=77.5, marijuana_use=16.399999618530273, avg_marijuana_use=16.399999618530273), Row(age='35-49', n=7391, alcohol_use=75.0, avg_alcohol_use=75.0, marijuana_use=10.399999618530273, avg_marijuana_use=10.399999618530273), Row(age='50-64', n=3923, alcohol_use=67.19999694824219, avg_alcohol_use=67.19999694824219, marijuana_use=7.300000190734863, avg_marijuana_use=7.300000190734863), Row(age='65+', n=2448, alcohol_use=49.29999923706055, avg_alcohol_use=49.29999923706055, marijuana_use=1.2000000476837158, avg_marijuana_use=1.2000000476837158)]
+**2024-10-15 23:25:35,414** - INFO - Closing session 01ef8b6e-4dce-12a5-b1d2-35a4a8c7f2ef
