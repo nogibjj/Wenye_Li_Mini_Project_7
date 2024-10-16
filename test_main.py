@@ -14,7 +14,7 @@ def test_extract():
 
 def test_load():
     data = load()
-    assert data
+    assert data == "Load success"
 
 
 def test_query():
