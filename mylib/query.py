@@ -1,6 +1,5 @@
 import os
 from databricks import sql
-import pandas as pd
 from dotenv import load_dotenv
 import logging
 
