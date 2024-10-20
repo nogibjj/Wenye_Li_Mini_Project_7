@@ -35,3 +35,15 @@ generate_and_push:
 	else \
 		echo "No changes to commit. Skipping commit and push."; \
 	fi
+
+extract:
+	etl extract
+
+transform_load: 
+	etl transform_load
+
+query:
+	etl run_query 'WITH AgeStats AS (SELECT age, AVG(alcohol_use) AS avg_alcohol_use, AVG(marijuana_use) AS avg_marijuana_use FROM DrugUseDB GROUP BY age) SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, d.marijuana_use, a.avg_marijuana_use FROM DrugUseDB d JOIN AgeStats a ON d.age = a.age ORDER BY d.age ASC, d.n DESC;'
+
+setup_package: 
+	python setup.py develop --user
