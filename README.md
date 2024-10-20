@@ -15,15 +15,19 @@
 
 ## Project Structures
 
-- `Makefile`:
+- `devcontainer`
 
-- `requirements.txt`
+- `cicd.yml`
 
 - `mylib`:
 
   - **extract.py**
   - **transform_load**
   - **queryt**
+
+- `Makefile`:
+
+- `requirements.txt`
 
 - `setup.py`
 
@@ -33,9 +37,15 @@
 
 - `README.me`
 
-- `cicd.yml`
+## Preparation
 
-- `devcontainer`
+1. open codespaces
+2. wait for container to be built and virtual environment to be activated with requirements.txt installed
+3. make your own .env file to store your Databricks' secrets as it requires a conncection to be established to Databricks
+4. build packaged project by running `make setup_package`
+5. extract: run `make extract`
+6. transform and load: run `make transform_load`
+7. query: run `make query` or alternatively write your own query using `etl_query general_query <insert query>`
 
 ## Dataset
 
