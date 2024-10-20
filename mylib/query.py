@@ -45,19 +45,19 @@ def run_query(query):
 
 
 # if __name__ == "__main__":
-#     user_query = """
-#         WITH AgeStats AS (
-#             SELECT age,
-#                    AVG(alcohol_use) AS avg_alcohol_use,
-#                    AVG(marijuana_use) AS avg_marijuana_use
-#             FROM DrugUseDB
-#             GROUP BY age
-#         )
-#         SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, 
-#                d.marijuana_use, a.avg_marijuana_use
-#         FROM DrugUseDB d
-#         JOIN AgeStats a
-#         ON d.age = a.age
-#         ORDER BY d.age ASC, d.n DESC
-#     """
+    # user_query = """
+    #     WITH AgeStats AS (
+    #         SELECT age,
+    #                AVG(alcohol_use) AS avg_alcohol_use,
+    #                AVG(marijuana_use) AS avg_marijuana_use
+    #         FROM DrugUseDB
+    #         GROUP BY age
+    #     )
+    #     SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, 
+    #            d.marijuana_use, a.avg_marijuana_use
+    #     FROM DrugUseDB d
+    #     JOIN AgeStats a
+    #     ON d.age = a.age
+    #     ORDER BY d.age ASC, d.n DESC
+    # """
 #     run_query(user_query)

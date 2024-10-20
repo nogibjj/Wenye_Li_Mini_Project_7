@@ -1,16 +1,17 @@
 [![CI](https://github.com/nogibjj/Wenye_Li_Mini_Project_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_6/actions/workflows/cicd.yml)
 
-## Wenye Li Mini Project 6
+## Wenye Li Mini Project 7
 
 ## Requirements
 
-- Design a complex SQL query involving joins, aggregation, and sorting
-- Provide an explanation for what the query is doing and the expected results
+- Package a Python script with setuptools or a similar tool
+- Include a user guide on how to install and use the tool
+- Include communication with an external or internal database (NoSQL, SQL, etc) [If you use Rust you can skip the DB part]
 
 ## Deliverables
 
-- SQL query
-- Written or video explanation of the query
+- Packaged tool
+- Written Guide
 
 ## Project Structures
 
@@ -23,6 +24,8 @@
   - **extract.py**
   - **transform_load**
   - **queryt**
+
+- `setup.py`
 
 - `main.py`
 
