@@ -1,4 +1,4 @@
-[![CI](https://github.com/nogibjj/Wenye_Li_Mini_Project_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_6/actions/workflows/cicd.yml)
+[![CI](https://github.com/nogibjj/Wenye_Li_Mini_Project_7/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_7/actions/workflows/cicd.yml)
 
 ## Wenye Li Mini Project 7
 
@@ -37,15 +37,15 @@
 
 - `README.me`
 
+- `db_operations.md` (please check this for logging)
+
 ## Preparation
 
-1. open codespaces
-2. wait for container to be built and virtual environment to be activated with requirements.txt installed
-3. make your own .env file to store your Databricks' secrets as it requires a conncection to be established to Databricks
-4. build packaged project by running `make setup_package`
-5. extract: run `make extract`
-6. transform and load: run `make transform_load`
-7. query: run `make query` or alternatively write your own query using `etl_query general_query <insert query>`
+1. Built virtual environment: run `make install`
+2. build packaged project by running `make setup_package`
+3. extract: run `make extract`
+4. transform and load: run `make transform_load`
+5. query: run `make query`
 
 ## Dataset
 
