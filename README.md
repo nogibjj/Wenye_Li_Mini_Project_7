@@ -37,7 +37,7 @@
 
 - `README.me`
 
-- `db_operations.md` (please check this for logging)
+- `db_operations.md` (please check this for logging info)
 
 ## Preparation
 
